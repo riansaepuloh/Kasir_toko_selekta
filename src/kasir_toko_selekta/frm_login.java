@@ -5,6 +5,7 @@
  */
 package kasir_toko_selekta;
 
+import java.awt.geom.RoundRectangle2D;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ public class frm_login extends javax.swing.JFrame {
     
     public frm_login() {
         initComponents();
+        setShape(new RoundRectangle2D.Double(0, 0, 415, 232, 20, 20));
         dbsetting = new koneksi();
         driver = dbsetting.SettingPanel("DBDriver");
         database = dbsetting.SettingPanel("DBDatabase");
@@ -41,19 +43,22 @@ public class frm_login extends javax.swing.JFrame {
     private void initComponents() {
 
         botton2 = new swing.Botton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txt_username = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
         botton1 = new swing.Botton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(420, 252));
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        botton2.setForeground(new java.awt.Color(0, 204, 204));
         botton2.setText("KELUAR");
         botton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         botton2.addActionListener(new java.awt.event.ActionListener() {
@@ -63,22 +68,13 @@ public class frm_login extends javax.swing.JFrame {
         });
         getContentPane().add(botton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LOGIN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 420, -1));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
+        txt_username.setBackground(new java.awt.Color(204, 204, 255));
         getContentPane().add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 185, -1));
+
+        txt_password.setBackground(new java.awt.Color(204, 204, 255));
         getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 185, -1));
 
+        botton1.setForeground(new java.awt.Color(0, 255, 255));
         botton1.setText("LOGIN");
         botton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         botton1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +83,34 @@ public class frm_login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+
+        jLabel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel5MouseDragged(evt);
+            }
+        });
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel5MousePressed(evt);
+            }
+        });
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 415, 230));
+
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("LOGIN");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 420, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel2.setText("Username");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel3.setText("Password");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/daftar.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -132,6 +156,18 @@ public class frm_login extends javax.swing.JFrame {
     private void botton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_botton2ActionPerformed
+    int xmouse,ymouse;
+    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
+        xmouse = evt.getX();
+        ymouse = evt.getY();
+    }//GEN-LAST:event_jLabel5MousePressed
+
+    private void jLabel5MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xmouse,y-ymouse);
+    }//GEN-LAST:event_jLabel5MouseDragged
 
     /**
      * @param args the command line arguments
@@ -175,6 +211,7 @@ public class frm_login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables

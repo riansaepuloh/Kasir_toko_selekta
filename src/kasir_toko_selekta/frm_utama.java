@@ -31,85 +31,144 @@ public class frm_utama extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        btn_karyawan = new javax.swing.JButton();
+        btn_supplier = new javax.swing.JButton();
+        btn_barang = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        btn_transaksi = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu2.setText("Data Master");
+        jPanel1.setLayout(new java.awt.GridLayout());
 
-        jMenuItem1.setText("Karyawan");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        btn_karyawan.setBackground(new java.awt.Color(255, 153, 255));
+        btn_karyawan.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
+        btn_karyawan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_karyawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
+        btn_karyawan.setText("KARYAWAN");
+        btn_karyawan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_karyawan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_karyawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_karyawanMouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jPanel1.add(btn_karyawan);
 
-        jMenuItem2.setText("Barang");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+        btn_supplier.setBackground(new java.awt.Color(153, 153, 255));
+        btn_supplier.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
+        btn_supplier.setForeground(new java.awt.Color(255, 255, 255));
+        btn_supplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/packages2.png"))); // NOI18N
+        btn_supplier.setText("SUPPLIER");
+        btn_supplier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_supplier.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_supplier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_supplierMouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jPanel1.add(btn_supplier);
 
-        jMenuItem3.setText("Supplier");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+        btn_barang.setBackground(new java.awt.Color(102, 255, 102));
+        btn_barang.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
+        btn_barang.setForeground(new java.awt.Color(255, 255, 255));
+        btn_barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barang.png"))); // NOI18N
+        btn_barang.setText("BARANG");
+        btn_barang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_barang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_barang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_barangMouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jPanel1.add(btn_barang);
 
-        jMenuItem5.setText("Transaksi");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
+
+        jPanel3.setLayout(new java.awt.GridLayout());
+
+        btn_transaksi.setBackground(new java.awt.Color(204, 102, 255));
+        btn_transaksi.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
+        btn_transaksi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi.png"))); // NOI18N
+        btn_transaksi.setText("TRANSAKSI");
+        btn_transaksi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_transaksi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_transaksiMouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        jPanel3.add(btn_transaksi);
 
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        jButton4.setBackground(new java.awt.Color(102, 255, 102));
+        jButton4.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barang.png"))); // NOI18N
+        jButton4.setText("KARYAWAN");
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jButton4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 407, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(580, 467));
+        setSize(new java.awt.Dimension(648, 468));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
         new frm_karyawan().setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btn_karyawanMouseClicked
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new frm_barang().setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void btn_supplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_supplierMouseClicked
         new frm_supplier().setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_btn_supplierMouseClicked
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-//        new frm_struk_belanja().setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
+        new frm_barang().setVisible(true);
+    }//GEN-LAST:event_btn_barangMouseClicked
+
+    private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
+        new frm_belanja().setVisible(true);
+    }//GEN-LAST:event_btn_transaksiMouseClicked
 
     //============================== LOGIN
 //    private Dimension dmn = Toolkit.getDefaultToolkit().getScreenSize();
@@ -255,12 +314,14 @@ public class frm_utama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JButton btn_barang;
+    private javax.swing.JButton btn_karyawan;
+    private javax.swing.JButton btn_supplier;
+    private javax.swing.JButton btn_transaksi;
+    private javax.swing.JButton jButton4;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

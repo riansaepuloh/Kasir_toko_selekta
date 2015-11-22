@@ -80,7 +80,7 @@ public class Botton extends JButton{
     protected void paintComponent(Graphics g) {
         Graphics2D gd = (Graphics2D) g.create();
         
-        paint = new GradientPaint(0, 0, Color.BLACK, 0, getHeight(), Color.YELLOW);
+        paint = new GradientPaint(0, 0, Color.BLUE, 0, getHeight(), Color.RED);
         shape = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), getHeight(),getHeight());
         
         
