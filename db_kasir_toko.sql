@@ -40,21 +40,21 @@ insert  into `barang`(`kd_barang`,`nama_barang`,`jml_barang`,`harga_barang`,`id_
 DROP TABLE IF EXISTS `detail_belanja`;
 
 CREATE TABLE `detail_belanja` (
-  `kd_struk` varchar(20) DEFAULT NULL,
+  `kd_struk` int(5) DEFAULT NULL,
   `kd_barang` varchar(8) DEFAULT NULL,
   `tgl_transaksi` date DEFAULT NULL,
   `harga_satuan` float DEFAULT NULL,
   `jml_belanja` int(4) DEFAULT NULL,
   `total_harga` float DEFAULT NULL,
-  KEY `struk_barang_ibfk_1` (`kd_barang`),
-  KEY `struk_barang_ibfk_2` (`kd_struk`),
+  KEY `detail_belanja_ibfk_1` (`kd_barang`),
+  KEY `kd_struk` (`kd_struk`),
   CONSTRAINT `detail_belanja_ibfk_1` FOREIGN KEY (`kd_barang`) REFERENCES `barang` (`kd_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `detail_belanja_ibfk_2` FOREIGN KEY (`kd_struk`) REFERENCES `struk_belanja` (`kd_struk`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `detail_belanja_ibfk_2` FOREIGN KEY (`kd_struk`) REFERENCES `struk_belanja` (`kd_struk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `detail_belanja` */
 
-insert  into `detail_belanja`(`kd_struk`,`kd_barang`,`tgl_transaksi`,`harga_satuan`,`jml_belanja`,`total_harga`) values ('st02','sy02','2015-10-04',1000000,1,1000000),('st01','l020','2015-11-02',200000,1,20000),('st03','t001','2015-11-02',20000,1,20000),('st02','t003','2015-10-25',20000,3,60000),('st02','a001','2015-11-01',20000,2,40000),('st04','o001','2015-10-25',20000,3,60000),('st02','l002','2015-11-01',20000,4,80000),('st01','s011','2015-10-04',20000,5,100000),('st02','t002','2015-10-31',20000,5,100000),(NULL,NULL,'0000-00-00',NULL,NULL,NULL);
+insert  into `detail_belanja`(`kd_struk`,`kd_barang`,`tgl_transaksi`,`harga_satuan`,`jml_belanja`,`total_harga`) values (2,'sy02','2015-10-04',1000000,1,1000000),(1,'l020','2015-11-02',200000,1,20000),(3,'t001','2015-11-02',20000,1,20000),(2,'t003','2015-10-25',20000,3,60000),(2,'a001','2015-11-01',20000,2,40000),(4,'o001','2015-10-25',20000,3,60000),(2,'l002','2015-11-01',20000,4,80000),(1,'s011','2015-10-04',20000,5,100000),(2,'t002','2015-10-31',20000,5,100000),(2,'t002','2015-12-28',20000,2,400000),(3,'t003','2015-12-28',20000,2,400000),(3,'t003','2015-12-28',20000,2,400000),(3,'t003','2015-12-28',20000,2,400000),(3,'t003','2015-12-28',20000,2,400000),(26,'t003','2015-12-28',20000,2,400000),(33,'a001','2015-12-28',2500000,1,2500000),(33,'sy02','2015-12-28',1000000,3,3000000),(34,'a001','2015-12-28',2500000,2,5000000),(38,'a001','2015-12-28',2500000,2,5000000),(39,'a001','2015-12-28',2500000,3,7500000),(40,'a001','2015-12-28',2500000,2,5000000),(41,'a001','2015-12-28',2500000,2,5000000),(41,'sy02','2015-12-28',1000000,3,3000000),(42,'a001','2015-12-28',2500000,3,7500000),(42,'sy02','2015-12-28',1000000,2,2000000),(43,'a001','2015-12-28',2500000,2,5000000),(43,'sy02','2015-12-28',1000000,3,3000000),(45,'a001','2015-12-28',2500000,2,5000000),(46,'a001','2015-12-28',2500000,2,5000000),(46,'sy02','2015-12-28',1000000,4,4000000),(47,'a001','2015-12-28',2500000,4,10000000),(48,'sy02','2015-12-28',1000000,3,3000000),(49,'a001','2015-12-28',2500000,4,10000000),(50,'a001','2015-12-28',2500000,3,7500000),(54,'a001','2015-12-28',2500000,3,7500000),(54,'t001','2015-12-28',4000000,2,8000000),(55,'t001','2015-12-28',4000000,2,8000000),(55,'a001','2015-12-28',2500000,3,7500000);
 
 /*Table structure for table `karyawan` */
 
@@ -71,24 +71,25 @@ CREATE TABLE `karyawan` (
 
 /*Data for the table `karyawan` */
 
-insert  into `karyawan`(`id_karyawan`,`nama_karyawan`,`jabatan`,`username`) values ('u001','rusdi noor firdaus','manager','rusdi'),('u002','siti mulyati','staf','siti'),('u003','ingeu lizzi','kasir','ingeu'),('u004','arif ardian','kasir','arif'),('u005','tami safitri','staf','tami'),('u006','hani','kasir','hani'),('u007','sarah nur pitri','staf','sarah'),('u008','ario dilla','staf','ario'),('u009','rahmad karyadi','kasir','rahmad'),('u010','anisa','kasir','anisa');
+insert  into `karyawan`(`id_karyawan`,`nama_karyawan`,`jabatan`,`username`) values ('u001','rusdi noor firdaus','manager','rusdi'),('u002','siti mulyati','staf','siti'),('u003','ingeu lizzi novianna','kasir','ingeu'),('u004','arif ardian','kasir','arif'),('u005','tami safitri','staf','tami'),('u006','hani','kasir','hani'),('u007','sarah nur pitri','staf','sarah'),('u008','ario dilla','staf','ario'),('u009','rahmad karyadi','kasir','rahmad'),('u010','anisa','kasir','anisa');
 
 /*Table structure for table `struk_belanja` */
 
 DROP TABLE IF EXISTS `struk_belanja`;
 
 CREATE TABLE `struk_belanja` (
-  `kd_struk` varchar(20) NOT NULL,
+  `kd_struk` int(5) NOT NULL,
   `tgl_transaksi` date DEFAULT NULL,
+  `total_belanja` double DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`kd_struk`),
-  KEY `username` (`username`),
+  KEY `struk_belanja_ibfk_1` (`username`),
   CONSTRAINT `struk_belanja_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `struk_belanja` */
 
-insert  into `struk_belanja`(`kd_struk`,`tgl_transaksi`,`username`) values ('st01','2015-02-04','anisa'),('st02','2015-04-07','anisa'),('st03','2015-05-06','ario'),('st04','2015-07-10','ario'),('st05','2015-07-12',NULL),('st06','2015-09-25',NULL),('st07','2015-10-11',NULL),('st08','2015-10-15',NULL),('st09','2015-10-18',NULL),('st10','2015-10-20',NULL);
+insert  into `struk_belanja`(`kd_struk`,`tgl_transaksi`,`total_belanja`,`username`) values (1,'2015-02-04',NULL,'anisa'),(2,'2015-04-07',NULL,'anisa'),(3,'2015-05-06',NULL,'ario'),(4,'2015-07-10',NULL,'ario'),(5,'2015-07-12',NULL,'anisa'),(6,'2015-09-25',NULL,'hani'),(7,'2015-10-11',NULL,'hani'),(8,'2015-10-15',NULL,'hani'),(9,'2015-10-18',NULL,'hani'),(10,'2015-10-20',NULL,'hani'),(11,'2015-12-28',NULL,'hani'),(12,'2015-12-28',NULL,'anisa'),(13,'2015-12-28',NULL,'sarah'),(14,'2015-12-28',NULL,'sarah'),(15,'2015-12-28',NULL,'sarah'),(16,'2015-12-28',NULL,NULL),(17,'2015-12-28',NULL,NULL),(18,'2015-12-28',NULL,NULL),(19,'2015-12-28',NULL,NULL),(20,'2015-12-28',NULL,NULL),(21,'2015-12-28',NULL,'anisa'),(22,'2015-12-28',NULL,'anisa'),(23,'2015-12-28',NULL,'anisa'),(24,NULL,NULL,'rahmad'),(25,NULL,NULL,'rahmad'),(26,'2015-12-28',NULL,NULL),(27,NULL,NULL,NULL),(28,NULL,NULL,NULL),(29,NULL,NULL,NULL),(30,NULL,NULL,NULL),(31,NULL,NULL,NULL),(32,NULL,NULL,NULL),(33,'2015-12-28',NULL,NULL),(34,'2015-12-28',NULL,NULL),(35,NULL,NULL,NULL),(36,NULL,NULL,NULL),(37,NULL,NULL,NULL),(38,'2015-12-28',NULL,NULL),(39,'2015-12-28',NULL,NULL),(40,'2015-12-28',NULL,NULL),(41,'2015-12-28',NULL,NULL),(42,'2015-12-28',NULL,NULL),(43,'2015-12-28',NULL,NULL),(44,'2015-12-28',NULL,NULL),(45,'2015-12-28',NULL,NULL),(46,'2015-12-28',NULL,NULL),(47,'2015-12-28',NULL,NULL),(48,'2015-12-28',NULL,NULL),(49,'2015-12-28',NULL,NULL),(50,'2015-12-28',NULL,NULL),(51,'2015-12-28',NULL,NULL),(52,'2015-12-28',NULL,NULL),(53,'2015-12-28',NULL,NULL),(54,'2015-12-28',NULL,NULL),(55,'2015-12-28',NULL,NULL);
 
 /*Table structure for table `supplier` */
 
