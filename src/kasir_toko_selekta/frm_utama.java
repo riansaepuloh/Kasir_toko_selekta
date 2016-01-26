@@ -7,6 +7,7 @@ package kasir_toko_selekta;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.UIManager;
 
 /**
  *
@@ -32,14 +33,18 @@ public class frm_utama extends javax.swing.JFrame {
 
         jMenuItem4 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         btn_karyawan = new javax.swing.JButton();
         btn_supplier = new javax.swing.JButton();
         btn_barang = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         btn_transaksi = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
 
         jMenuItem4.setText("jMenuItem4");
 
@@ -47,7 +52,20 @@ public class frm_utama extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        btn_karyawan.setBackground(new java.awt.Color(255, 153, 255));
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 157, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 127, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel5);
+
+        btn_karyawan.setBackground(new java.awt.Color(255, 0, 51));
         btn_karyawan.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
         btn_karyawan.setForeground(new java.awt.Color(255, 255, 255));
         btn_karyawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
@@ -61,7 +79,7 @@ public class frm_utama extends javax.swing.JFrame {
         });
         jPanel1.add(btn_karyawan);
 
-        btn_supplier.setBackground(new java.awt.Color(153, 153, 255));
+        btn_supplier.setBackground(new java.awt.Color(255, 102, 0));
         btn_supplier.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
         btn_supplier.setForeground(new java.awt.Color(255, 255, 255));
         btn_supplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/packages2.png"))); // NOI18N
@@ -89,10 +107,21 @@ public class frm_utama extends javax.swing.JFrame {
         });
         jPanel1.add(btn_barang);
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 157, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 127, Short.MAX_VALUE)
+        );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jPanel4);
+
+        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 204, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TOKO SELEKTA");
@@ -105,15 +134,28 @@ public class frm_utama extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
-        btn_transaksi.setBackground(new java.awt.Color(204, 102, 255));
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 196, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 127, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel7);
+
+        btn_transaksi.setBackground(new java.awt.Color(102, 51, 255));
         btn_transaksi.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
         btn_transaksi.setForeground(new java.awt.Color(255, 255, 255));
         btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi.png"))); // NOI18N
@@ -127,14 +169,32 @@ public class frm_utama extends javax.swing.JFrame {
         });
         jPanel3.add(btn_transaksi);
 
-        jButton4.setBackground(new java.awt.Color(102, 255, 255));
+        jButton4.setBackground(new java.awt.Color(0, 153, 255));
         jButton4.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan.png"))); // NOI18N
-        jButton4.setText("LAPORAN");
+        jButton4.setText("Backup & Restore");
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton4);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 196, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 127, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,8 +204,8 @@ public class frm_utama extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -157,28 +217,40 @@ public class frm_utama extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(648, 386));
+        setSize(new java.awt.Dimension(821, 446));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
-        new frm_karyawan().setVisible(true);
+        frm_karyawan kry = new frm_karyawan();
+        kry.setExtendedState(frm_karyawan.MAXIMIZED_BOTH);
+        kry.setVisible(true);
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
     private void btn_supplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_supplierMouseClicked
-        new frm_supplier().setVisible(true);
+        frm_supplier supp = new frm_supplier();
+        supp.setExtendedState(frm_supplier.MAXIMIZED_BOTH);
+        supp.setVisible(true);
     }//GEN-LAST:event_btn_supplierMouseClicked
 
     private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
-        new frm_barang().setVisible(true);
+        frm_barang bar = new frm_barang();
+        bar.setExtendedState(frm_barang.MAXIMIZED_BOTH);
+        bar.setVisible(true);
     }//GEN-LAST:event_btn_barangMouseClicked
 
     private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
-        new frm_belanja().setVisible(true);
+        frm_transaksi tran = new frm_transaksi();
+        tran.setExtendedState(frm_transaksi.MAXIMIZED_BOTH);
+        tran.setVisible(true);               
     }//GEN-LAST:event_btn_transaksiMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        new backup_restore().setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     //============================== LOGIN
 //    private Dimension dmn = Toolkit.getDefaultToolkit().getScreenSize();
@@ -298,10 +370,11 @@ public class frm_utama extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+                UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(frm_utama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -334,5 +407,9 @@ public class frm_utama extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }

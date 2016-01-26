@@ -32,7 +32,6 @@ public class frm_supplier extends javax.swing.JFrame {
      */
     public frm_supplier() {
         initComponents();
-        setShape(new RoundRectangle2D.Double(0, 0, 748, 569, 20, 20));
         dbsetting = new koneksi();
         driver = dbsetting.SettingPanel("DBDriver");
         database = dbsetting.SettingPanel("DBDatabase");
@@ -156,7 +155,6 @@ public class frm_supplier extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(748, 569));
-        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -404,7 +402,7 @@ public class frm_supplier extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(748, 544));
+        setSize(new java.awt.Dimension(764, 583));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

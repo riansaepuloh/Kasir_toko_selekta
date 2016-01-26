@@ -14,12 +14,13 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import jdk.nashorn.internal.parser.TokenType;
 
 /**
  *
  * @author Wawan
  */
-public class frm_belanja extends javax.swing.JFrame {
+public class frm_transaksi extends javax.swing.JFrame {
 
     //Dekralasi variabel
     koneksi dbsetting;
@@ -28,7 +29,7 @@ public class frm_belanja extends javax.swing.JFrame {
     /**
      * Creates new form frm_supplie
      */
-    public frm_belanja() {
+    public frm_transaksi() {
         initComponents();
         dbsetting = new koneksi();
         driver = dbsetting.SettingPanel("DBDriver");
@@ -209,6 +210,7 @@ public class frm_belanja extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txt_sub_total = new javax.swing.JTextField();
+        txt_nama_karyawan = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -253,7 +255,7 @@ public class frm_belanja extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(t_faktur);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "TRANSAKSI"));
 
         tgl_transaksi.setDateFormatString("dd-MM-yyyy");
@@ -293,8 +295,9 @@ public class frm_belanja extends javax.swing.JFrame {
 
         jLabel6.setText("HARGA SATUAN");
 
+        txt_tot_belanja.setEditable(false);
         txt_tot_belanja.setBackground(new java.awt.Color(0, 0, 0));
-        txt_tot_belanja.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 14)); // NOI18N
+        txt_tot_belanja.setFont(new java.awt.Font("Digital-7 Mono", 1, 36)); // NOI18N
         txt_tot_belanja.setForeground(new java.awt.Color(0, 204, 0));
         txt_tot_belanja.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -309,6 +312,7 @@ public class frm_belanja extends javax.swing.JFrame {
             }
         });
 
+        txt_pembayaran.setFont(new java.awt.Font("Digital-7 Mono", 0, 14)); // NOI18N
         txt_pembayaran.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txt_pembayaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -318,11 +322,16 @@ public class frm_belanja extends javax.swing.JFrame {
 
         jLabel8.setText("PEMBAYARAN");
 
+        txt_kembalian.setFont(new java.awt.Font("Digital-7 Mono", 0, 14)); // NOI18N
         txt_kembalian.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel9.setText("KEMBALIAN");
 
         jLabel10.setText("TOTAL");
+
+        txt_sub_total.setFont(new java.awt.Font("Digital-7 Mono", 0, 12)); // NOI18N
+
+        txt_nama_karyawan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -347,6 +356,8 @@ public class frm_belanja extends javax.swing.JFrame {
                         .addGap(326, 326, 326))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2)
+                        .addGap(122, 122, 122)
+                        .addComponent(txt_nama_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tgl_transaksi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,11 +366,11 @@ public class frm_belanja extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_kembalian)
+                                    .addComponent(txt_tot_belanja, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                     .addComponent(txt_pembayaran)
-                                    .addComponent(txt_tot_belanja, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txt_kembalian))))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -378,7 +389,7 @@ public class frm_belanja extends javax.swing.JFrame {
                                     .addComponent(txt_harga_satuan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txt_sub_total, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                                     .addComponent(txt_qty, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(596, 616, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,20 +428,28 @@ public class frm_belanja extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_tot_belanja, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_kembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_pembayaran, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                                .addGap(1, 1, 1)))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_kembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txt_nama_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_sub_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(btn_tambah))
+                    .addComponent(jLabel10)
+                    .addComponent(txt_sub_total, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_tambah)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -440,13 +459,11 @@ public class frm_belanja extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,12 +474,11 @@ public class frm_belanja extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(17, 17, 17)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(878, 605));
+        setSize(new java.awt.Dimension(878, 611));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -480,6 +496,31 @@ public class frm_belanja extends javax.swing.JFrame {
         txt_pembayaran.setText("");
         txt_kembalian.setText("");
     }
+    
+    private void setnamakaryawan(){
+        String nama = "";
+        try {
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database,user,pass);
+            Statement stt = kon.createStatement();
+            String SQL = "SELECT nama_karyawan from karyawan";
+            ResultSet res = stt.executeQuery(SQL);
+            while (res.next()){
+                nama  = res.getString("nama_karyawan");
+//                txt_nama_karyawan.add(nama);
+            }
+            res.close();
+            stt.close();
+            kon.close();
+            
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+            JOptionPane.showConfirmDialog(null,ex.getMessage(),"Error",
+            JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        }
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
       Date hari_ini = new Date();
       tgl_transaksi.setDate(hari_ini);
@@ -563,7 +604,7 @@ public class frm_belanja extends javax.swing.JFrame {
     private void txt_qtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_qtyKeyPressed
         int tekan = evt.getKeyCode();
         if(tekan==10){
-            hitung_sub();
+            kurangi_stock();
         }
         
     }//GEN-LAST:event_txt_qtyKeyPressed
@@ -582,10 +623,14 @@ public class frm_belanja extends javax.swing.JFrame {
 //        masukkan_total_belanja();
     }//GEN-LAST:event_btn_tambahActionPerformed
 
+    
+    
     private void txt_pembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pembayaranKeyPressed
        int tekan = evt.getKeyCode();
         if(tekan==10){
             pengembalian();
+            total_belanja_ketable();
+            
         }
     }//GEN-LAST:event_txt_pembayaranKeyPressed
 
@@ -662,8 +707,51 @@ public class frm_belanja extends javax.swing.JFrame {
         }
     }
     
-    private void perhitungan(){
-//        int jumlah
+    private void kurangi_stock(){
+      int jml_barang = Integer.valueOf(txt_qty.getText());
+      String kd_br = String.valueOf(txt_kd_barang.getText());
+      String SQL = "SELECT `jml_barang` FROM `barang` WHERE `kd_barang` = '"+kd_br+"';";
+      
+      int stok = 0;
+      
+      try {
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database,user,pass);
+            Statement stt = kon.createStatement();
+            ResultSet res = stt.executeQuery(SQL);
+            while (res.next()){
+                stok = res.getInt("jml_barang");
+            }
+            
+            int sisa = stok - jml_barang;
+            if(sisa>=0){
+                String SQL2 = "UPDATE `db_kasir_toko`.`barang` SET `jml_barang` = '"+sisa+"' WHERE `kd_barang` = '"+kd_br+"';";
+                stt.executeUpdate(SQL2);
+                hitung_sub();
+            } else {
+               JOptionPane.showMessageDialog(null,"Maaf Stok barang hanya ada "+stok+" Buah");
+               txt_qty.requestFocus();
+               txt_qty.setText("");
+            }     
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+    }
+    
+    private void total_belanja_ketable(){
+        
+      String tot = String.valueOf(txt_tot_belanja.getText());
+      String kd_tran = String.valueOf(txt_kd_transaksi.getText());
+      String SQL = "UPDATE `db_kasir_toko`.`struk_belanja` SET `total_belanja` = '"+tot+"' WHERE `kd_struk` = '"+kd_tran+"';";
+      try {
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database,user,pass);
+            Statement stt = kon.createStatement();
+            stt.executeUpdate(SQL);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+        
     }
     
     private void transaksi_baru(){
@@ -721,14 +809,30 @@ public class frm_belanja extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frm_belanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frm_belanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frm_belanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frm_belanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -749,7 +853,7 @@ public class frm_belanja extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frm_belanja().setVisible(true);
+                new frm_transaksi().setVisible(true);
             }
         });
     }
@@ -777,6 +881,7 @@ public class frm_belanja extends javax.swing.JFrame {
     private javax.swing.JTextField txt_kd_barang;
     private javax.swing.JTextField txt_kd_transaksi;
     private javax.swing.JTextField txt_kembalian;
+    private javax.swing.JComboBox txt_nama_karyawan;
     private javax.swing.JTextField txt_nm_barang;
     private javax.swing.JTextField txt_pembayaran;
     private javax.swing.JTextField txt_qty;
