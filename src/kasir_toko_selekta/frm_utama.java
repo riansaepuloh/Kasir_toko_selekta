@@ -7,6 +7,11 @@ package kasir_toko_selekta;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -18,8 +23,18 @@ public class frm_utama extends javax.swing.JFrame {
     /**
      * Creates new form frm_supplier1
      */
-    public frm_utama() {
+    //Dekralasi variabel
+    String driver,database,user,pass;
+    Object tabel;
+    String userlogin = "";
+    
+    public frm_utama(String userlog) {
         initComponents();
+        userlogin = userlog;
+        driver = "com.mysql.jdbc.Driver";
+        database = "jdbc:mysql://127.0.0.1/db_kasir_toko";
+        user = "root";
+        pass = "";
     }
 
     /**
@@ -32,23 +47,36 @@ public class frm_utama extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem4 = new javax.swing.JMenuItem();
+        pilihanmenu = new javax.swing.JTabbedPane();
+        p_user = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        btn_karyawan = new javax.swing.JButton();
         btn_supplier = new javax.swing.JButton();
         btn_barang = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         btn_transaksi = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        p_admin = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        txt_hak_akses = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        btn_karyawan1 = new javax.swing.JButton();
+        btn_user1 = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -60,24 +88,10 @@ public class frm_utama extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 127, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5);
-
-        btn_karyawan.setBackground(new java.awt.Color(255, 0, 51));
-        btn_karyawan.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
-        btn_karyawan.setForeground(new java.awt.Color(255, 255, 255));
-        btn_karyawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
-        btn_karyawan.setText("KARYAWAN");
-        btn_karyawan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_karyawan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_karyawan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_karyawanMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btn_karyawan);
 
         btn_supplier.setBackground(new java.awt.Color(255, 102, 0));
         btn_supplier.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
@@ -115,30 +129,12 @@ public class frm_utama extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 127, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4);
 
-        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 204, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("TOKO SELEKTA");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
+        p_user.add(jPanel1);
 
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -146,7 +142,7 @@ public class frm_utama extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGap(0, 157, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +183,7 @@ public class frm_utama extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGap(0, 157, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,39 +192,142 @@ public class frm_utama extends javax.swing.JFrame {
 
         jPanel3.add(jPanel6);
 
+        p_user.add(jPanel3);
+
+        pilihanmenu.addTab("USER", p_user);
+
+        jPanel2.setLayout(new java.awt.GridLayout());
+
+        txt_hak_akses.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_hak_akses.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 157, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 127, Short.MAX_VALUE)
+        );
+
+        btn_karyawan1.setBackground(new java.awt.Color(255, 0, 51));
+        btn_karyawan1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
+        btn_karyawan1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_karyawan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
+        btn_karyawan1.setText("KARYAWAN");
+        btn_karyawan1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_karyawan1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_karyawan1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_karyawan1MouseClicked(evt);
+            }
+        });
+
+        btn_user1.setBackground(new java.awt.Color(51, 255, 51));
+        btn_user1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 11)); // NOI18N
+        btn_user1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_user1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
+        btn_user1.setText("USERNAME");
+        btn_user1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_user1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_user1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_user1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 157, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 127, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout p_adminLayout = new javax.swing.GroupLayout(p_admin);
+        p_admin.setLayout(p_adminLayout);
+        p_adminLayout.setHorizontalGroup(
+            p_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_adminLayout.createSequentialGroup()
+                .addComponent(txt_hak_akses, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_karyawan1)
+                .addComponent(btn_user1)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
+            .addGroup(p_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(p_adminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        p_adminLayout.setVerticalGroup(
+            p_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_adminLayout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addGroup(p_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_karyawan1)
+                    .addComponent(btn_user1)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73))
+            .addGroup(p_adminLayout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(txt_hak_akses)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(p_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(p_adminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        pilihanmenu.addTab("ADMIN", p_admin);
+
+        jPanel16.setBackground(new java.awt.Color(153, 153, 153));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("TOKO SELEKTA");
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(42, 42, 42))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(pilihanmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(pilihanmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(821, 446));
+        setSize(new java.awt.Dimension(823, 477));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
-        frm_karyawan kry = new frm_karyawan();
-        kry.setExtendedState(frm_karyawan.MAXIMIZED_BOTH);
-        kry.setVisible(true);
-    }//GEN-LAST:event_btn_karyawanMouseClicked
 
     private void btn_supplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_supplierMouseClicked
         frm_supplier supp = new frm_supplier();
@@ -252,6 +351,22 @@ public class frm_utama extends javax.swing.JFrame {
         new backup_restore().setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        masukakses();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btn_karyawan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawan1MouseClicked
+        frm_karyawan kar = new frm_karyawan();
+        kar.setExtendedState(frm_karyawan.MAXIMIZED_BOTH);
+        kar.setVisible(true);
+    }//GEN-LAST:event_btn_karyawan1MouseClicked
+
+    private void btn_user1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_user1MouseClicked
+        frm_user user1 = new frm_user();
+        user1.setExtendedState(frm_user.MAXIMIZED_BOTH);
+        user1.setVisible(true);
+    }//GEN-LAST:event_btn_user1MouseClicked
+
     //============================== LOGIN
 //    private Dimension dmn = Toolkit.getDefaultToolkit().getScreenSize();
 //    public frm_utama(String userlogin) {
@@ -261,104 +376,57 @@ public class frm_utama extends javax.swing.JFrame {
 //        
 //      
 //        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
-//        switch (_User) {
-//            case "Administrator":
-//                loginAdmin();
-//                break;
-//            case "User 1":
-//                loginUser1();
-//                break;
-//            case "User 2":
-//                loginUser1();
-//                break;
-//            case "User 3":
-//                loginUser1();
-//                break;
-//            case "User 4":
-//                loginUser1();
-//                break;
-//            case "User 5":
-//                loginUser1();
-//                break;
-//            case "User 6":
-//                loginUser1();
-//                break;
-//            case "User 7":
-//                loginUser1();
-//                break;
-//            case "User 8":
-//                loginUser1();
-//                break;
-//            case "User 9":
-//                loginUser1();
-//                break;
-//            
-//        }
-//    }
+    private void masukakses(){
+        String userakses = "";
+        try {
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database,user,pass);
+            Statement stt = kon.createStatement();
+            String SQL = "select level_akses from user where username='"+userlogin+"'";
+            ResultSet res = stt.executeQuery(SQL);
+            while (res.next()){
+                userakses = res.getString("level_akses");
+            }
+            res.close();
+            stt.close();
+            kon.close();
+            
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+            JOptionPane.showConfirmDialog(null,ex.getMessage(),"Error",
+            JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        }
+        
+        switch (userakses) {
+            case "administrator":
+                loginAdmin();
+                break;
+            case "user":
+                loginUser();
+                break;            
+        }
+    }
+    
 //
 //    frm_utama() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
 //    
 //    
-//    public void loginAdmin(){
-//        jMenu2.setVisible(true);
-//        jMenuItem1.setEnabled(true);
-//        jMenuItem2.setEnabled(true);
-//          
-//    }
-//    
-//    public void loginUser1(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    
-//    public void loginUser2(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    public void loginUser3(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    public void loginUser4(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    public void loginUser5(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    public void loginUser6(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    public void loginUser7(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    public void loginUser8(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    public void loginUser9(){
-//        jMenuItem1.setEnabled(false);
-//        jMenuItem2.setEnabled(false);
-//        
-//    }
-//    
+    public void loginAdmin(){
+        p_admin.setVisible(true);
+        txt_hak_akses.setVisible(false);
+    }
     
-    
-    //=================================
-    
+    public void loginUser(){
+        p_user.setVisible(true);
+        p_admin.setVisible(false);
+        btn_karyawan1.setVisible(false);
+        btn_user1.setVisible(false);
+        txt_hak_akses.setText("Maaf Anda tidak mempunyai Hak Akses");
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -390,26 +458,39 @@ public class frm_utama extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run(String userlog) {
+                new frm_utama(userlog).setVisible(true);
+            }
+
+            @Override
             public void run() {
-                new frm_utama().setVisible(true);
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_barang;
-    private javax.swing.JButton btn_karyawan;
+    private javax.swing.JButton btn_karyawan1;
     private javax.swing.JButton btn_supplier;
     private javax.swing.JButton btn_transaksi;
+    private javax.swing.JButton btn_user1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel p_admin;
+    private javax.swing.JPanel p_user;
+    private javax.swing.JTabbedPane pilihanmenu;
+    private javax.swing.JLabel txt_hak_akses;
     // End of variables declaration//GEN-END:variables
 }

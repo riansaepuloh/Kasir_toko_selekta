@@ -21,7 +21,6 @@ import net.sf.jasperreports.view.JasperViewer;
 public class frm_karyawan extends javax.swing.JFrame {
 
     //Dekralasi variabel
-    koneksi dbsetting;
     String driver,database,user,pass;
     Object tabel;
     /**
@@ -29,11 +28,10 @@ public class frm_karyawan extends javax.swing.JFrame {
      */
     public frm_karyawan() {
         initComponents();
-        dbsetting = new koneksi();
-        driver = dbsetting.SettingPanel("DBDriver");
-        database = dbsetting.SettingPanel("DBDatabase");
-        user = dbsetting.SettingPanel("DBUsername");
-        pass = dbsetting.SettingPanel("DBPassword");
+        driver = "com.mysql.jdbc.Driver";
+        database = "jdbc:mysql://127.0.0.1/db_kasir_toko";
+        user = "root";
+        pass = "";
         
         t_karyawan.setModel(tableModel);
         settableload();
